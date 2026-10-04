@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root {
+    --bg-color: transparent;
+    --card-bg: #2d2b2a; /* Card background */
+    --text-color: #f7f3ee; /* Number color */
+    --accent: #d4a373; /* Subtle accent */
+  }
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--bg-color);
+    font-family: 'Courier New', Courier, monospace;
+  }
+  .clock-container {
+    display: flex;
+    gap: 12px;
+  }
+  .card {
+    background: var(--card-bg);
+    color: var(--text-color);
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 16px 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+    min-width: 60px;
+    text-align: center;
+    border-bottom: 3px solid var(--accent);
+  }
+  .colon {
+    font-size: 3rem;
+    color: var(--card-bg);
+    align-self: center;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div class="clock-container">
+  <div class="card" id="hours">00</div>
+  <div class="colon">:</div>
+  <div class="card" id="minutes">00</div>
+</div>
+
+<script>
+  function updateTime() {
+    const now = new Date();
+    let hours = String(now.getHours()).padStart(2, '0');
+    let minutes = String(now.getMinutes()).padStart(2, '0');
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+</script>
+</body>
+</html>
